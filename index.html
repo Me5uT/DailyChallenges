@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script async src="index.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <p style="width: 100%; text-align: center">Search</p>
+    <br />
+
+    <div
+      class="search-input-container"
+      style="display: flex; width: 100%; justify-content: center"
+    >
+      <input
+        class="search-input"
+        id="search"
+        type="search"
+        name="search"
+        placeholder="search"
+      />
+      <input
+        id="search-button"
+        type="button"
+        onclick="searchByQuery()"
+        value="Search"
+      />
+    </div>
+
+    <div class="data-list-container">
+      <ul id="data-list"></ul>
+    </div>
+  </body>
+</html>
