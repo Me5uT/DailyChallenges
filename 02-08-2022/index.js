@@ -27,12 +27,17 @@ const dataListElement = document.getElementById("data-list");
 const searchByQuery = () => {
   // search in array and push to searchList
   if (query != "") {
-    // // searching by query include with
+    // V1 searching by query with include
     searchList = cars.filter((car) =>
       car.toLowerCase().includes(query.toLowerCase())
     );
 
-    // // searching by query starts with
+    // // V2 searching by query with forEach
+    // cars.forEach((car) => {
+    //   if (car.toLowerCase().includes(query.toLowerCase())) searchList.push(car);
+    // });
+
+    // // V3 searching by query starts with
     // searchList = cars.filter((car) =>
     //   car.toLowerCase().startsWith(query.toLowerCase())
     // );
