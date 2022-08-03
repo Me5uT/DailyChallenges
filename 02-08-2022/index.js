@@ -26,9 +26,20 @@ const dataListElement = document.getElementById("data-list");
 // searching by query
 const searchByQuery = () => {
   // search in array and push to searchList
-  searchList = cars.filter((car) =>
-    car.toLowerCase().includes(query.toLowerCase())
-  );
+  if (query != "") {
+    // // searching by query include with
+    searchList = cars.filter((car) =>
+      car.toLowerCase().includes(query.toLowerCase())
+    );
+
+    // // searching by query starts with
+    // searchList = cars.filter((car) =>
+    //   car.toLowerCase().startsWith(query.toLowerCase())
+    // );
+  } else {
+    searchList = [];
+    console.log("list empty");
+  }
 
   // clear data list
   while (dataListElement.hasChildNodes()) {
@@ -46,24 +57,3 @@ const searchByQuery = () => {
     }
   }
 };
-
-// // searching by query starts with
-// const searchByQuery = () => {
-//   searchList = cars.filter((car) =>
-//     car.toLowerCase().startsWith(query.toLowerCase())
-//   );
-//
-// while (dataListElement.hasChildNodes()) {
-//     document
-//       .getElementById("data-list")
-//       .removeChild(dataListElement.firstChild);
-//   }
-//   if (searchList.length > 0) {
-//     for (let index = 0; index < searchList.length; index++) {
-//       const listItem = document.createElement("li");
-//       listItem.innerHTML = searchList[index];
-//       dataListElement.appendChild(listItem);
-//     }
-//   }
-
-// };
