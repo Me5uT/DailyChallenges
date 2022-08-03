@@ -5,6 +5,28 @@ const isPalindrome = (word: string): boolean => {
   return reversedWord == word;
 };
 
+const trimAndLowerCaseText = (str: string): string => {
+  return str.trim().toLowerCase();
+};
+
+// const reverseString = (str: string): string => {
+//   let reversedTextArr: string[] = [];
+
+//   str.split("").forEach((letter, index) => {
+//     reversedTextArr[str.length - 1 - index] = letter;
+//   });
+//   console.log(reversedTextArr.join(""));
+//   return reversedTextArr.join("");
+// };
+
+const reverseString = (str: string): string => {
+  console.log(str.split("").reverse().join(""));
+
+  return str.split("").reverse().join("");
+};
+
+reverseString("mesut ");
+
 const reverseText = (text: string) => {
   // textin başındaki ve sondaki boşlukları kaldır, lower case yap
   const trimedAndLowerCaseText = text.trim().toLowerCase();
