@@ -1,1 +1,1 @@
-# This repo for my daily homeworks
+# This repo for my daily daily challenges
