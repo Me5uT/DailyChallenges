@@ -1,6 +1,6 @@
 const isPalindrome = (word: string): boolean => {
   // parçala, ters çevir ve birleştir
-  const reversedWord = word.split("").reverse().join("");
+  const reversedWord = reverseString(word);
 
   return reversedWord == word;
 };
@@ -10,16 +10,24 @@ const trimAndLowerCaseText = (str: string): string => {
 };
 
 const reverseString = (str: string): string => {
-  // V1
-  let reversedTextArr: string[] = [];
-  str.split("").forEach((letter, index) => {
-    reversedTextArr[str.length - 1 - index] = letter;
-  });
-  console.log(reversedTextArr.join(""));
-  return reversedTextArr.join("");
+  // // V1
+  // let reversedTextArr: string[] = [];
+  // str.split("").forEach((letter, index) => {
+  //   reversedTextArr[str.length - 1 - index] = letter;
+  // });
+  // console.log(reversedTextArr.join(""));
+  // return reversedTextArr.join("");
 
   // // V2
   // return str.split("").reverse().join("");
+
+  // V3
+  let reversedText: string = "";
+
+  for (let i = 0; i < str.length; i++) {
+    reversedText = str[i] + reversedText;
+  }
+  return reversedText;
 };
 
 const reverseText = (text: string) => {
