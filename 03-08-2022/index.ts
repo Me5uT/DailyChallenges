@@ -56,7 +56,7 @@ const reverseText = (text: string) => {
     // // text kelime değil ise; boşluklara göre parçala, her kelimeyi ters çevir, ve birleştir
     // const reversedText = trimedAndLowerCaseText
     //   .split(" ")
-    //   .map((word) => word.split("").reverse().join(""))
+    //   .map((word) => reverseString(word))
     //   .join(" ");
     // console.log(
     //   `${trimedAndLowerCaseText}, bir kelime değildir ve tersi ${reversedText}'dir.`
