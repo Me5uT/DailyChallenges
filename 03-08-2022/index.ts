@@ -9,27 +9,22 @@ const trimAndLowerCaseText = (str: string): string => {
   return str.trim().toLowerCase();
 };
 
-// const reverseString = (str: string): string => {
-//   let reversedTextArr: string[] = [];
-
-//   str.split("").forEach((letter, index) => {
-//     reversedTextArr[str.length - 1 - index] = letter;
-//   });
-//   console.log(reversedTextArr.join(""));
-//   return reversedTextArr.join("");
-// };
-
 const reverseString = (str: string): string => {
-  console.log(str.split("").reverse().join(""));
+  // V1
+  let reversedTextArr: string[] = [];
+  str.split("").forEach((letter, index) => {
+    reversedTextArr[str.length - 1 - index] = letter;
+  });
+  console.log(reversedTextArr.join(""));
+  return reversedTextArr.join("");
 
-  return str.split("").reverse().join("");
+  // // V2
+  // return str.split("").reverse().join("");
 };
-
-reverseString("mesut ");
 
 const reverseText = (text: string) => {
   // textin başındaki ve sondaki boşlukları kaldır, lower case yap
-  const trimedAndLowerCaseText = text.trim().toLowerCase();
+  const trimedAndLowerCaseText = trimAndLowerCaseText(text);
   //  kelime mi cümle mi kontrolü
   const isWord = trimedAndLowerCaseText.split(" ").length < 2;
 
@@ -42,24 +37,33 @@ const reverseText = (text: string) => {
         `${trimedAndLowerCaseText}, bir kelimedir ve palindrome'dur.`
       );
     } else {
-      const reversedWord = trimedAndLowerCaseText.split("").reverse().join("");
+      const reversedWord = reverseString(trimedAndLowerCaseText);
+
       console.log(
-        `${trimedAndLowerCaseText}, bir kelimedir ve tersi ${reversedWord}'dir.`
+        `${trimedAndLowerCaseText}, bir kelimedir ve tersi = ${reversedWord}'dir.`
       );
     }
   } else {
-    // text kelime değil ise; boşluklara göre parçala, her kelimeyi ters çevir, ve birleştir
-    const reversedText = trimedAndLowerCaseText
-      .split(" ")
-      .map((word) => word.split("").reverse().join(""))
-      .join(" ");
+    // // V1
+    // // text kelime değil ise; boşluklara göre parçala, her kelimeyi ters çevir, ve birleştir
+    // const reversedText = trimedAndLowerCaseText
+    //   .split(" ")
+    //   .map((word) => word.split("").reverse().join(""))
+    //   .join(" ");
+    // console.log(
+    //   `${trimedAndLowerCaseText}, bir kelime değildir ve tersi ${reversedText}'dir.`
+    // );
+
+    // // V2
+    const reversedText = reverseString(trimedAndLowerCaseText);
 
     console.log(
-      `${trimedAndLowerCaseText}, bir kelime değildir ve tersi ${reversedText}'dir.`
+      `${trimedAndLowerCaseText}, bir kelime değildir ve tersi = ${reversedText}'dir.`
     );
   }
 };
 
-reverseText("this is a sentence");
+reverseText("thIs is A sentEnce");
 reverseText("this ");
 reverseText(" this");
+reverseText("AbbA");
