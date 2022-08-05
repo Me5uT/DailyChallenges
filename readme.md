@@ -1,1 +1,1 @@
-# This repo for my daily daily challenges
+# This repo for my daily challenges
