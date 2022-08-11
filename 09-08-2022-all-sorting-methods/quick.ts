@@ -2,6 +2,7 @@ const numbers: number[] = [5, 3, 7, 8, 2, 1, 4];
 
 // V1 Quick Sort
 const quickSort = (numbers: number[]) => {
+  // array tek eleman ise array i don
   if (numbers.length == 1) return numbers;
 
   // son elemanı pivot olarak belirle ve array i pivot a göre ayır
