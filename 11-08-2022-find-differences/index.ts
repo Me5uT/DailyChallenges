@@ -1,11 +1,12 @@
 // V1
 const findDifferences = (firstArray: number[], secondArray: number[]) => {
   let sameNumbers: number[] = [];
-  let differences: number[] = [];
+  let inJustFirstArray: number[] = [];
+  let inJustSecondArray: number[] = [];
 
-  // 2 array icindeki ayni elemanlari bul
+  // 1. arrayde olup 2. arrayde olmayanlari ve ayni sayilari bulmak icin
   for (let firstIndex = 0; firstIndex < firstArray.length; firstIndex++) {
-    let isSameNumberFlag: boolean = false;
+    let isSameNumberFirstFlag: boolean = false;
 
     for (
       let sencondIndex = 0;
@@ -15,61 +16,43 @@ const findDifferences = (firstArray: number[], secondArray: number[]) => {
       // if numbers are same
       if (firstArray[firstIndex] == secondArray[sencondIndex]) {
         sameNumbers.push(firstArray[firstIndex]);
-        isSameNumberFlag = true;
+        isSameNumberFirstFlag = true;
         break;
       }
     }
 
     // if numbers are not same
-    if (!isSameNumberFlag) {
-      differences.push(firstArray[firstIndex]);
+    if (!isSameNumberFirstFlag) {
+      inJustFirstArray.push(firstArray[firstIndex]);
     }
   }
 
-  console.log("differences", differences);
+  //   -----------------------------------------------
+
+  // 2. arrayde olup 1. arrayde olmayanlari bulmak icin
+  for (let i = 0; i < secondArray.length; i++) {
+    let isSameNumberSecondFlag: boolean = false;
+
+    for (let j = 0; j < firstArray.length; j++) {
+      // if numbers are same
+      if (firstArray[j] == secondArray[i]) {
+        isSameNumberSecondFlag = true;
+        break;
+      }
+    }
+
+    // if numbers are not same
+    if (!isSameNumberSecondFlag) {
+      inJustSecondArray.push(secondArray[i]);
+    }
+  }
+
+  console.log("inJustFirstArray", inJustFirstArray);
+  console.log("inJustSecondArray", inJustSecondArray);
+
   console.log("same numbers", sameNumbers);
 };
 
 const arr1 = [1, 2, 7, 5, 3, 4];
 const arr2 = [5, 6, 7, 8, 9];
-// findDifferences(arr1, arr2);
-
-// V2
-const findDifferences2 = (firstArray: number[], secondArray: number[]) => {
-  let allNumbers: number[] = [...firstArray, ...secondArray];
-  let sameNumbers: number[] = [];
-  let differences: number[] = [];
-
-  let count = 0;
-  console.log("allnumbers", allNumbers);
-
-  for (let firstIndex = 0; firstIndex < allNumbers.length; firstIndex++) {
-    let isSameNumberFlag: boolean = false;
-
-    for (let secondIndex = 0; secondIndex < allNumbers.length; secondIndex++) {
-      if (
-        firstIndex != secondIndex &&
-        allNumbers[firstIndex] == allNumbers[secondIndex]
-      ) {
-        sameNumbers.push(allNumbers[firstIndex]);
-        isSameNumberFlag = true;
-        break;
-      }
-    }
-
-    if (!isSameNumberFlag) differences.push(allNumbers[firstIndex]);
-  }
-
-  // unique elements in same numbers
-  for (let i = 0; i < sameNumbers.length; i++) {
-    for (let j = i + 1; j < sameNumbers.length; j++) {
-      if (sameNumbers[i] === sameNumbers[j]) {
-        sameNumbers.splice(j, 1);
-      }
-    }
-  }
-
-  console.log("sameNumbers", sameNumbers, "differences", differences);
-};
-
-findDifferences2(arr1, arr2);
+findDifferences(arr1, arr2);
